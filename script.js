@@ -23,7 +23,9 @@ const winningPatterns = [
 const resetGame = () => {
     turnO = true;
     count = 0;
+
     enableBoxes();
+
     msgcontainer.classList.add("hide");
 };
 
@@ -32,10 +34,14 @@ boxes.forEach((box) => {
         if (turnO) {
             // playerO
             box.innerText = "O";
+            box.style.backgroundColor = "#F08A4B";
+            box.style.color="#ffffff";
             turnO = false;
         } else {
             // playerX
             box.innerText = "X";
+            box.style.backgroundColor = "#D78A76";
+            box.style.color="#00A7E1";
             turnO = true;
         }
         box.disabled = true;
@@ -65,6 +71,7 @@ const enableBoxes = () => {
     for (let box of boxes) {
         box.disabled = false;
         box.innerText = "";
+        box.style.backgroundColor="";
     }
 };
 
