@@ -21,7 +21,7 @@ h1{
     text-shadow: 1px 1px 2px red, 0 0 1em rgb(243, 5, 5), 0 0 0.2em rgb(255, 0, 0);
 }
 .container{
-    height: 70vh;
+    height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
