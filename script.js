@@ -5,6 +5,8 @@ let newGame = document.querySelector("#new_button");
 let msgcontainer = document.querySelector(".msg_container"); // Use querySelector for a single element
 
 let msg = document.querySelector("#msg");
+const player1 = document.getElementById('player1');
+const player2 = document.getElementById('player2');
 
 let turnO = true;
 let count = 0;
@@ -23,25 +25,40 @@ const winningPatterns = [
 const resetGame = () => {
     turnO = true;
     count = 0;
-
+    
     enableBoxes();
-
+    player1.value='';
+    player2.value='';
     msgcontainer.classList.add("hide");
 };
 
+
 boxes.forEach((box) => {
     box.addEventListener("click", () => {
+        const playerName1 = player1.value ;
+        const playerName2 = player2.value ;
+
+        if(turnO && !playerName1 && !playerName2){
+            alert("Please Enter Player Name..");
+            return;
+        }
+
         if (turnO) {
             // playerO
-            box.innerText = "O";
-            box.style.backgroundColor = "#F08A4B";
+            box.style.fontSize="15px";
+            box.innerText = playerName1;
+            box.style.backgroundColor = "#5B8C5A";
             box.style.color="#ffffff";
+            box.style.fontStyle="oblique";
             turnO = false;
         } else {
             // playerX
-            box.innerText = "X";
-            box.style.backgroundColor = "#D78A76";
-            box.style.color="#00A7E1";
+            box.style.fontSize="15px";
+            box.innerText = playerName2;
+           
+            box.style.backgroundColor = "#E3655B";
+            box.style.color="#ffffff";
+            box.style.fontStyle="oblique";
             turnO = true;
         }
         box.disabled = true;
@@ -76,7 +93,7 @@ const enableBoxes = () => {
 };
 
 const showWinner = (winner) => {
-    msg.innerText = `Congratulations, winner is ${winner}`;
+    msg.innerText = `Congratulations ${winner} ,You are the Winner..`;
     msgcontainer.classList.remove("hide");
     disableBoxes();
 };
